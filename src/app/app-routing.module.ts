@@ -7,30 +7,32 @@ import { MaintenanceEditComponent } from './maintenance/maintenance-edit/mainten
 
 const routes: Routes = [
   {
-    path: 'maintenances',
-    component: MaintenancesComponent,
-    data: { title: 'Maintenance List' }
-  },
-  {
-    path: 'maintenance-detail/:id',
-    component: MaintenanceDetailComponent,
-    data: { title: 'Maintenance Detail' }
-  },
-  {
-    path: 'maintenance-new',
-    component: MaintenanceNewComponent,
-    data: { title: 'Add Maintenance' }
-  },
-  {
-    path: 'maintenance-edit/:id',
-    component: MaintenanceEditComponent,
-    data: { title: 'Edit Maintenance' }
-  },
-  {
     path: '',
     redirectTo: '/maintenances',
     pathMatch: 'full'
-  }
+  },
+  {path: 'maintenance', children: [
+    {
+      path: 'maintenances',
+      component: MaintenancesComponent,
+      data: { title: 'Maintenance List' }
+    },
+    {
+      path: 'maintenance-detail/:id',
+      component: MaintenanceDetailComponent,
+      data: { title: 'Maintenance Detail' }
+    },
+    {
+      path: 'maintenance-new',
+      component: MaintenanceNewComponent,
+      data: { title: 'Add Maintenance' }
+    },
+    {
+      path: 'maintenance-edit/:id',
+      component: MaintenanceEditComponent,
+      data: { title: 'Edit Maintenance' }
+    }
+  ]}
 ];
 
 @NgModule({
