@@ -54,7 +54,7 @@ import { MaintenancesComponent } from './maintenance/maintenances/maintenances.c
 import { MaintenanceDetailComponent } from './maintenance/maintenance-detail/maintenance-detail.component';
 import { MaintenanceNewComponent } from './maintenance/maintenance-new/maintenance-new.component';
 import { MaintenanceEditComponent } from './maintenance/maintenance-edit/maintenance-edit.component';
-import { NavService } from './services/nav.service';
+import { NavService } from '../services/nav.service';
 import { TopNavComponent } from './shared/top-nav/top-nav.component';
 import { MenuListItemComponent } from './shared/menu-list-item/menu-list-item.component';
 
