@@ -1,7 +1,7 @@
 import {Component, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {VERSION} from '@angular/material';
 import {NavItem} from './nav-item';
-import {NavService} from './nav.service';
+import {NavService} from './services/nav.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit {
       // route: 'maintenance',
       children: [
         {
-          displayName: 'Lista de Computadores',
+          displayName: 'Listar Computadores',
           iconName: 'view_list',
           // route: 'maintenance/maintenances'
         },
@@ -36,7 +36,7 @@ export class AppComponent implements AfterViewInit {
       // route: 'maintenance',
       children: [
         {
-          displayName: 'Lista de Hardwares/Softwares',
+          displayName: 'Listar Hardwares/Softwares',
           iconName: 'view_list',
           // route: 'maintenance/maintenances'
         },
@@ -53,7 +53,7 @@ export class AppComponent implements AfterViewInit {
       route: 'maintenance',
       children: [
         {
-          displayName: 'Lista de Manutenções',
+          displayName: 'Listar Manutenções',
           iconName: 'view_list',
           route: 'maintenance/maintenances'
         },
