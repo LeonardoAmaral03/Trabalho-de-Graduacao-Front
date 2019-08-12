@@ -1,3 +1,23 @@
-<p>
-  maintenances works!
-</p>
+<div>
+  <h3>Lista de Manutenções</h3>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.maintenance_name}} </td>
+  </ng-container>
+
+  <!-- Atividade Column -->
+  <ng-container matColumnDef="atividade">
+    <th mat-header-cell *matHeaderCellDef> Atividade </th>
+    <td mat-cell *matCellDef="let element"> {{element.maintenance_activity}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
