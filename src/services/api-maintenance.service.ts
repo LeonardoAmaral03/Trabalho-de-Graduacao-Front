@@ -49,7 +49,7 @@ export class ApiMaintenanceService {
   }
 
   deleteMaintenance(id): Observable<Maintenance> {
-    const url = `${apiUrl}/delete/${id}`;
+    const url = `${apiUrl}/${id}`;
 
     return this.http.delete<Maintenance>(url, httpOptions).pipe(
       tap(_ => console.log(`remove a manutenção com id=${id}`)),

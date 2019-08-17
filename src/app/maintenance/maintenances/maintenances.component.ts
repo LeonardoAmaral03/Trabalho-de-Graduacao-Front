@@ -9,7 +9,7 @@ import { Maintenance } from '../../../models/maintenance';
 })
 export class MaintenancesComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name', 'activity'];
+  displayedColumns: string[] = [ 'name', 'activity', 'acao'];
   dataSource: Maintenance[];
   isLoadingResults = true;
 
@@ -19,7 +19,6 @@ export class MaintenancesComponent implements OnInit {
     this._api.getMaintenances()
     .subscribe(res => {
       this.dataSource = res;
-      console.log(this.dataSource);
       this.isLoadingResults = false;
     }, err => {
       console.log(err);

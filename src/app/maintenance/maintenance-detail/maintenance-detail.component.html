@@ -1,3 +1,27 @@
-<p>
-  maintenance-detail works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <button mat-flat-button color="accent" [routerLink]="['/maintenances']"><mat-icon>list</mat-icon> Voltar</button>
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{maintenance.name}}</h2></mat-card-title>
+      <!-- <mat-card-subtitle>{{maintenance.activity}}</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt>Atividade a ser realizada:</dt>
+        <dd>{{maintenance.activity}}</dd>
+        <!-- <dt>Atualizado em:</dt>
+        <dd>{{produto.dt_atualizacao | date}}</dd> -->
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" class="teste" [routerLink]="['/maintenance-edit', maintenance.id]"><mat-icon>edit</mat-icon> Editar</button>
+      <button mat-flat-button color="warn" (click)="deleteMaintenance(maintenance.id)"><mat-icon>delete</mat-icon> Excluir</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
