@@ -1,0 +1,31 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <button mat-flat-button color="accent" [routerLink]="['/items']"><mat-icon>list</mat-icon> Voltar</button>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>{{item.name}}</h2></mat-card-title>
+        <!-- <mat-card-subtitle>{{maintenance.activity}}</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <dl>
+          <dt>Marca</dt>
+          <dd>{{item.brand}}</dd>
+          <dt>Modelo:</dt>
+          <dd>{{item.model}}</dd>
+          <dt>Descrição:</dt>
+          <dd>{{item.description}}</dd>
+          <!-- <dt>Atualizado em:</dt>
+          <dd>{{produto.dt_atualizacao | date}}</dd> -->
+        </dl>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" class="teste" [routerLink]="['/item-edit', item.id]"><mat-icon>edit</mat-icon> Editar</button>
+        <button mat-flat-button color="warn" (click)="deleteItem(item.id)"><mat-icon>delete</mat-icon> Excluir</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

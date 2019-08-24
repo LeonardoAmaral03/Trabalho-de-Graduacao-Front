@@ -55,6 +55,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ItemsComponent } from './item/items/items.component';
+import { ItemNewComponent } from './item/item-new/item-new.component';
+import { ItemEditComponent } from './item/item-edit/item-edit.component';
+import { ItemDetailComponent } from './item/item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     MaintenanceDetailComponent,
     MaintenanceNewComponent,
     MaintenanceEditComponent,
-    MenuComponent
+    MenuComponent,
+    ItemsComponent,
+    ItemNewComponent,
+    ItemEditComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
