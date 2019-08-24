@@ -59,6 +59,10 @@ import { ItemsComponent } from './item/items/items.component';
 import { ItemNewComponent } from './item/item-new/item-new.component';
 import { ItemEditComponent } from './item/item-edit/item-edit.component';
 import { ItemDetailComponent } from './item/item-detail/item-detail.component';
+import { ComputersComponent } from './computer/computers/computers.component';
+import { ComputerNewComponent } from './computer/computer-new/computer-new.component';
+import { ComputerEditComponent } from './computer/computer-edit/computer-edit.component';
+import { ComputerDetailComponent } from './computer/computer-detail/computer-detail.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,11 @@ import { ItemDetailComponent } from './item/item-detail/item-detail.component';
     ItemsComponent,
     ItemNewComponent,
     ItemEditComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    ComputersComponent,
+    ComputerNewComponent,
+    ComputerEditComponent,
+    ComputerDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,10 @@ import { ItemsComponent } from './item/items/items.component';
 import { ItemDetailComponent } from './item/item-detail/item-detail.component';
 import { ItemNewComponent } from './item/item-new/item-new.component';
 import { ItemEditComponent } from './item/item-edit/item-edit.component';
+import { ComputersComponent } from './computer/computers/computers.component';
+import { ComputerDetailComponent } from './computer/computer-detail/computer-detail.component';
+import { ComputerNewComponent } from './computer/computer-new/computer-new.component';
+import { ComputerEditComponent } from './computer/computer-edit/computer-edit.component';
 
 const routes: Routes = [
   {
@@ -49,6 +53,26 @@ const routes: Routes = [
     path: 'item-edit/:id',
     component: ItemEditComponent,
     data: { title: 'Edit Item' }
+  },
+  {
+    path: 'computers',
+    component: ComputersComponent,
+    data: { title: 'Computer List' }
+  },
+  {
+    path: 'computer-detail/:id',
+    component: ComputerDetailComponent,
+    data: { title: 'Computer Detail' }
+  },
+  {
+    path: 'computer-new',
+    component: ComputerNewComponent,
+    data: { title: 'Add Computer' }
+  },
+  {
+    path: 'computer-edit/:id',
+    component: ComputerEditComponent,
+    data: { title: 'Edit Computer' }
   },
   {
     path: '',

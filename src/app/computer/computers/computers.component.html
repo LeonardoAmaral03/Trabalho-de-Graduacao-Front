@@ -1,9 +1,9 @@
 <div>
-  <h3>Lista de Itens</h3>
-  <button mat-flat-button color="primary" routerLink="/item-new" selected><mat-icon>add</mat-icon> Adicionar</button>
+  <h3>Lista de Computadores</h3>
+  <button mat-flat-button color="primary" routerLink="/computer-new" selected><mat-icon>add</mat-icon> Adicionar</button>
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+ 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
@@ -11,18 +11,6 @@
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Nome </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-  
-  <!-- Weight Column -->
-  <ng-container matColumnDef="brand">
-    <th mat-header-cell *matHeaderCellDef> Marca </th>
-    <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="model">
-    <th mat-header-cell *matHeaderCellDef> Modelo </th>
-    <td mat-cell *matCellDef="let element"> {{element.model}} </td>
   </ng-container>
 
   <!-- Weight Column -->
@@ -35,7 +23,7 @@
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef>  </th>
     <td mat-cell *matCellDef="let element"> 
-      <button mat-flat-button color="accent" routerLink="/item-detail/{{element.id}}" selected>
+      <button mat-flat-button color="accent" routerLink="/computer-detail/{{element.id}}" selected>
         <mat-icon>visibility</mat-icon> Detalhe
       </button>
     </td>

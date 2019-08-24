@@ -35,7 +35,7 @@ export class ApiItemService {
   addItem(item): Observable<Item> {
     return this.http.post<Item>(apiUrl, item, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
-      tap((maintenance: Item) => console.log(`adicionou o item com w/ id=${item.id}`)),
+      tap((item: Item) => console.log(`adicionou o item com w/ id=${item.id}`)),
       catchError(this.handleError<Item>('addItem'))
     );
   }

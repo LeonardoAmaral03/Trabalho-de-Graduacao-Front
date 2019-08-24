@@ -1,0 +1,13 @@
+<div>
+  <h3>Adicionar Novo Computador</h3>
+</div>
+<form class="example-container" [formGroup]="computerForm" (ngSubmit)="addComputer(computerForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Nome do Computador" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea  matInput name="description" placeholder="Descrição" formControlName="description"></textarea>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!computerForm.valid" mat-button color="primary" >Adicionar</button>
+</form>
