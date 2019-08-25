@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiItemService } from '../../../services/api-item.service';
 import { Item } from '../../../models/item';
+import { MaintenanceItem } from '../../../models/maintenanceItem'
 
 @Component({
   selector: 'app-item-detail',
@@ -10,19 +11,33 @@ import { Item } from '../../../models/item';
 })
 export class ItemDetailComponent implements OnInit {
 
+  displayedColumns: string[] = [ 'name', 'period', 'status', 'acao'];
   item: Item = { id: '', name: '', brand: '', model: '', description: '' };
+  dataSource: MaintenanceItem[];
   isLoadingResults = true;
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiItemService) { }
 
   ngOnInit() {
     this.getItem(this.route.snapshot.params.id);
+    this.getMaintenaceItems(this.route.snapshot.params.id);
   }
 
   getItem(id) {
     this.api.getItem(id)
       .subscribe(data => {
         this.item = data;
+        this.isLoadingResults = false;
+      });
+  }
+
+  getMaintenaceItems(id) {
+    this.api.GetIMaintenanceItems(id)
+      .subscribe(res => {
+        this.dataSource = res;
+        this.isLoadingResults = false;
+      }, err => {
+        console.log(err);
         this.isLoadingResults = false;
       });
   }

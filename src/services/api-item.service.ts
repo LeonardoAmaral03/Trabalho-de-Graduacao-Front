@@ -3,6 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Item } from 'src/models/item';
+import { MaintenanceItem } from 'src/models/maintenanceItem';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -21,6 +22,15 @@ export class ApiItemService {
       .pipe(
         tap(itens => console.log('leu os itens')),
         catchError(this.handleError('getItems', []))
+      );
+  }
+
+  GetIMaintenanceItems(id: number): Observable<MaintenanceItem[]> {
+    const url = `${apiUrl}/MaintenanceItem/${id}`;
+    return this.http.get<MaintenanceItem[]>(url)
+      .pipe(
+        tap(maintenanceItens => console.log('leu as manutenções do item')),
+        catchError(this.handleError('GetIMaintenanceItems', []))
       );
   }
 
