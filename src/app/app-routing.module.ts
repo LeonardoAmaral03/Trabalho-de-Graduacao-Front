@@ -12,6 +12,7 @@ import { ComputersComponent } from './computer/computers/computers.component';
 import { ComputerDetailComponent } from './computer/computer-detail/computer-detail.component';
 import { ComputerNewComponent } from './computer/computer-new/computer-new.component';
 import { ComputerEditComponent } from './computer/computer-edit/computer-edit.component';
+import { MaintenanceItemNewComponent } from './maintenanceItem/maintenance-item-new/maintenance-item-new.component';
 
 const routes: Routes = [
   {
@@ -78,7 +79,12 @@ const routes: Routes = [
     path: '',
     redirectTo: '/maintenances',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'maintenance-item-new',
+    component: MaintenanceItemNewComponent,
+    data: { title: 'Add MaintenanceItem' }
+  },
 ];
 
 @NgModule({
