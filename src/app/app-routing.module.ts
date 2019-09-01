@@ -81,7 +81,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'maintenance-item-new',
+    path: 'maintenance-item-new/:id',
     component: MaintenanceItemNewComponent,
     data: { title: 'Add MaintenanceItem' }
   },

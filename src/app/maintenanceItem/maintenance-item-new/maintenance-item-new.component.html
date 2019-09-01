@@ -2,11 +2,11 @@
   <h3>Adicionar Nova Manutenção ao Item</h3>
 </div>
 <form class="example-container" [formGroup]="maintenanceItemForm" (ngSubmit)="addMaintenanceItem(maintenanceItemForm.value)">
-  <h2>{{item.name}}</h2>
+  <h2>{{item?.name}}</h2>
 
   <mat-form-field>
     <mat-label>Selecione uma Manutenção</mat-label>
-    <mat-select [(value)]="selected">
+    <mat-select name="maintenanceId" [(value)]="selected" formControlName="maintenanceId">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let maintenance of maintenances" [value]="maintenance.id">{{maintenance.name}}</mat-option>
     </mat-select>
@@ -15,6 +15,50 @@
   <mat-form-field>
     <input matInput name="period" placeholder="Período de manutenção em meses" formControlName="period">
   </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="status" placeholder="Status" formControlName="status">
+  </mat-form-field>
   
   <button type="submit" [disabled]="!maintenanceItemForm.valid" mat-button color="primary" >Adicionar</button>
 </form>
+
+<div>
+  <h3>Lista de Manutenções</h3>
+</div>
+<table mat-table [dataSource]="maintenanceItems" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.maintenance.name}} </td>
+  </ng-container>
+  
+  <!-- Weight Column -->
+  <ng-container matColumnDef="period">
+    <th mat-header-cell *matHeaderCellDef> Período </th>
+    <td mat-cell *matCellDef="let element"> {{element.period}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+  
+  <!-- Position Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-flat-button color="accent" routerLink="/maintenance-detail/{{element.maintenanceId}}" selected>
+        <mat-icon>visibility</mat-icon> Detalhe
+      </button>
+    </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

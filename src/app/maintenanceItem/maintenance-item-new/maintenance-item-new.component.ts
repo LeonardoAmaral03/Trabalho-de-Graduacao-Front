@@ -14,6 +14,7 @@ import { MaintenanceItemViewModel } from 'src/models/maintenanceItemViewModel';
 })
 export class MaintenanceItemNewComponent implements OnInit {
 
+  displayedColumns: string[] = [ 'name', 'period', 'status', 'acao'];
   maintenanceItemForm: FormGroup;
   maintenanceItems: MaintenanceItem[];
   maintenances: Maintenance[];
@@ -31,8 +32,10 @@ export class MaintenanceItemNewComponent implements OnInit {
       itemId : [null, Validators.required],
       maintenanceId : [null, Validators.required],
       period : [null, Validators.required],
-      status : [null, [Validators.required, Validators.minLength(4)]]
+      status : [null, Validators.required]
     });
+
+    this.maintenanceItemForm.controls.itemId.setValue(this.route.snapshot.params.id);
   }
 
   getIMaintenanceItem(id) {
@@ -47,7 +50,6 @@ export class MaintenanceItemNewComponent implements OnInit {
 
   addMaintenanceItem(form: NgForm) {
     this.isLoadingResults = true;
-    form
     this.api.addMaintenanceItem(form)
       .subscribe(res => {
           const id = res.itemId;
