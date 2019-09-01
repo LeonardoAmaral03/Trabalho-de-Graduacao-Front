@@ -5,8 +5,8 @@
   <h2>{{item?.name}}</h2>
 
   <mat-form-field>
-    <mat-label>Selecione uma Manutenção</mat-label>
-    <mat-select name="maintenanceId" [(value)]="selected" formControlName="maintenanceId">
+    <!-- <mat-label>Selecione uma Manutenção</mat-label> -->
+    <mat-select name="maintenanceId" placeholder="Selecione uma Manutenção" [(value)]="selected" formControlName="maintenanceId">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let maintenance of maintenances" [value]="maintenance.id">{{maintenance.name}}</mat-option>
     </mat-select>
@@ -17,7 +17,12 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="status" placeholder="Status" formControlName="status">
+    <!-- <input matInput name="status" placeholder="Status" formControlName="status"> -->
+    <mat-select name="status" placeholder="Status" [(ngModel)]="selectedStatus" formControlName="status" disabled="true">
+      <mat-option [value]="0">Realizada</mat-option>
+      <mat-option [value]="1">Atrasada</mat-option>
+      <mat-option [value]="2">Pendente</mat-option>
+    </mat-select>
   </mat-form-field>
   
   <button type="submit" [disabled]="!maintenanceItemForm.valid" mat-button color="primary" >Adicionar</button>

@@ -6,6 +6,7 @@ import { Maintenance } from 'src/models/maintenance';
 import { MaintenanceItem } from 'src/models/maintenanceItem';
 import { Item } from 'src/models/item';
 import { MaintenanceItemViewModel } from 'src/models/maintenanceItemViewModel';
+import { Status } from '../../../models/enum/enumStatus';
 
 @Component({
   selector: 'app-maintenance-item-new',
@@ -21,6 +22,8 @@ export class MaintenanceItemNewComponent implements OnInit {
   item: Item;
   selected: Maintenance;
   isLoadingResults = false;
+
+  selectedStatus: Status = Status.Pending;
 
   // tslint:disable-next-line: max-line-length
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiMaintenanceItemService, private formBuilder: FormBuilder) { }
@@ -54,7 +57,8 @@ export class MaintenanceItemNewComponent implements OnInit {
       .subscribe(res => {
           const id = res.itemId;
           this.isLoadingResults = false;
-          this.router.navigate(['/item-detail', id]);
+          this.getIMaintenanceItem(id);
+          // this.router.navigate(['/maintenance-item-new', id]);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
