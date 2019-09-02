@@ -60,15 +60,6 @@ export class ApiMaintenanceItemService {
     );
   }
 
-  deleteMaintenanceItem(itemId, maintenanceId): Observable<MaintenanceItem> {
-    const url = `${apiUrl}/${itemId}/${maintenanceId}`;
-
-    return this.http.delete<MaintenanceItem>(url, httpOptions).pipe(
-      tap(_ => console.log(`remove a manutenção do item com itemId=${itemId} e maintenanceId=${maintenanceId}`)),
-      catchError(this.handleError<MaintenanceItem>('deleteItem'))
-    );
-  }
-
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

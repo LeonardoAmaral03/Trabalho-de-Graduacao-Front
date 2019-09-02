@@ -55,4 +55,20 @@ export class ItemDetailComponent implements OnInit {
       );
   }
 
+  deleteMaintenanceItem(itemId, maintenanceId) {
+    console.log(itemId);
+    console.log(maintenanceId);
+    this.isLoadingResults = true;
+    this.api.deleteMaintenanceItem(itemId, maintenanceId)
+      .subscribe(res => {
+          this.isLoadingResults = false;
+          this.getMaintenaceItems(itemId);
+          // this.router.navigate(['/items']);
+        }, (err) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        }
+      );
+  }
+
 }

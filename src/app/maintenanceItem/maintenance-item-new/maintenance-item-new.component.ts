@@ -29,7 +29,7 @@ export class MaintenanceItemNewComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiMaintenanceItemService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.getIMaintenanceItem(this.route.snapshot.params.id);
+    this.getMaintenanceItem(this.route.snapshot.params.id);
 
     this.maintenanceItemForm = this.formBuilder.group({
       itemId : [null, Validators.required],
@@ -41,7 +41,7 @@ export class MaintenanceItemNewComponent implements OnInit {
     this.maintenanceItemForm.controls.itemId.setValue(this.route.snapshot.params.id);
   }
 
-  getIMaintenanceItem(id) {
+  getMaintenanceItem(id) {
     this.api.getIMaintenanceItem(id)
       .subscribe(data => {
         this.item = data.item;
@@ -57,28 +57,12 @@ export class MaintenanceItemNewComponent implements OnInit {
       .subscribe(res => {
           const id = res.itemId;
           this.isLoadingResults = false;
-          this.getIMaintenanceItem(id);
+          this.getMaintenanceItem(id);
           // this.router.navigate(['/maintenance-item-new', id]);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
         });
-  }
-
-  deleteItem(itemId, maintenanceId) {
-    console.log(itemId);
-    console.log(maintenanceId);
-    this.isLoadingResults = true;
-    this.api.deleteMaintenanceItem(itemId, maintenanceId)
-      .subscribe(res => {
-          this.isLoadingResults = false;
-          this.getIMaintenanceItem(itemId);
-          // this.router.navigate(['/items']);
-        }, (err) => {
-          console.log(err);
-          this.isLoadingResults = false;
-        }
-      );
   }
 
 }
