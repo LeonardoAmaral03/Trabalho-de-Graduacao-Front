@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { MaintenanceItem } from 'src/models/maintenanceItem';
 import { MaintenanceItemViewModel } from 'src/models/maintenanceItemViewModel';
+import { MaintenanceItemEditViewModel } from 'src/models/maintenanceItemEditViewModel';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -25,20 +26,28 @@ export class ApiMaintenanceItemService {
   //     );
   // }
 
-  // GetIMaintenanceItems(id: number): Observable<MaintenanceItemViewModel[]> {
+  // GetMaintenanceItems(id: number): Observable<MaintenanceItemViewModel[]> {
   //   const url = `${apiUrl}/MaintenanceItems/${id}`;
   //   return this.http.get<MaintenanceItemViewModel[]>(url)
   //     .pipe(
   //       tap(maintenanceItens => console.log('leu as manutenções do item')),
-  //       catchError(this.handleError('GetIMaintenanceItems', []))
+  //       catchError(this.handleError('GetMaintenanceItems', []))
   //     );
   // }
 
-  getIMaintenanceItem(id: number): Observable<MaintenanceItemViewModel> {
+  getMaintenanceItems(id: number): Observable<MaintenanceItemViewModel> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<MaintenanceItemViewModel>(url).pipe(
       tap(_ => console.log(`leu as manutenções do item com id=${id}`)),
-      catchError(this.handleError<MaintenanceItemViewModel>(`getIMaintenanceItem id=${id}`))
+      catchError(this.handleError<MaintenanceItemViewModel>(`getMaintenanceItems id=${id}`))
+    );
+  }
+
+  getMaintenanceItem(itemId: number, maintenanceId: number): Observable<MaintenanceItemEditViewModel> {
+    const url = `${apiUrl}/${itemId}/${maintenanceId}`;
+    return this.http.get<MaintenanceItemEditViewModel>(url).pipe(
+      tap(_ => console.log(`leu a manutenção de id=${maintenanceId} do item com id=${itemId}`)),
+      catchError(this.handleError<MaintenanceItemEditViewModel>(`getMaintenanceItem itemId=${itemId} maintenanceId=${maintenanceId}`))
     );
   }
 

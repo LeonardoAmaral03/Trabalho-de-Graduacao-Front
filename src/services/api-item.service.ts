@@ -25,12 +25,12 @@ export class ApiItemService {
       );
   }
 
-  GetIMaintenanceItems(id: number): Observable<MaintenanceItem[]> {
+  GetMaintenanceItems(id: number): Observable<MaintenanceItem[]> {
     const url = `${apiUrl}/MaintenanceItem/${id}`;
     return this.http.get<MaintenanceItem[]>(url)
       .pipe(
         tap(maintenanceItens => console.log('leu as manutenções do item')),
-        catchError(this.handleError('GetIMaintenanceItems', []))
+        catchError(this.handleError('GetMaintenanceItems', []))
       );
   }
 

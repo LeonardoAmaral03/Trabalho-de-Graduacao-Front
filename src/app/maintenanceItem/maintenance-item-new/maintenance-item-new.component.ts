@@ -5,7 +5,6 @@ import { ApiMaintenanceItemService } from '../../../services/api-maintenance-ite
 import { Maintenance } from 'src/models/maintenance';
 import { MaintenanceItem } from 'src/models/maintenanceItem';
 import { Item } from 'src/models/item';
-import { MaintenanceItemViewModel } from 'src/models/maintenanceItemViewModel';
 import { Status } from '../../../models/enum/enumStatus';
 
 @Component({
@@ -29,7 +28,7 @@ export class MaintenanceItemNewComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiMaintenanceItemService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.getMaintenanceItem(this.route.snapshot.params.id);
+    this.getMaintenanceItems(this.route.snapshot.params.id);
 
     this.maintenanceItemForm = this.formBuilder.group({
       itemId : [null, Validators.required],
@@ -41,8 +40,8 @@ export class MaintenanceItemNewComponent implements OnInit {
     this.maintenanceItemForm.controls.itemId.setValue(this.route.snapshot.params.id);
   }
 
-  getMaintenanceItem(id) {
-    this.api.getIMaintenanceItem(id)
+  getMaintenanceItems(id) {
+    this.api.getMaintenanceItems(id)
       .subscribe(data => {
         this.item = data.item;
         this.maintenances = data.maintenances;
@@ -57,7 +56,7 @@ export class MaintenanceItemNewComponent implements OnInit {
       .subscribe(res => {
           const id = res.itemId;
           this.isLoadingResults = false;
-          this.getMaintenanceItem(id);
+          this.getMaintenanceItems(id);
           // this.router.navigate(['/maintenance-item-new', id]);
         }, (err) => {
           console.log(err);

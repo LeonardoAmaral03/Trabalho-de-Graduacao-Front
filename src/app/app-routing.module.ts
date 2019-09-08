@@ -13,6 +13,7 @@ import { ComputerDetailComponent } from './computer/computer-detail/computer-det
 import { ComputerNewComponent } from './computer/computer-new/computer-new.component';
 import { ComputerEditComponent } from './computer/computer-edit/computer-edit.component';
 import { MaintenanceItemNewComponent } from './maintenanceItem/maintenance-item-new/maintenance-item-new.component';
+import { MaintenanceItemEditComponent } from './maintenanceItem/maintenance-item-edit/maintenance-item-edit.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,11 @@ const routes: Routes = [
     path: 'maintenance-item-new/:id',
     component: MaintenanceItemNewComponent,
     data: { title: 'Add MaintenanceItem' }
+  },
+  {
+    path: 'maintenance-item-edit/:itemId/:maintenanceId',
+    component: MaintenanceItemEditComponent,
+    data: { title: 'Edit MaintenanceItem' }
   },
 ];
 

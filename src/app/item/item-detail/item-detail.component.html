@@ -64,6 +64,9 @@
       <button mat-flat-button color="accent" routerLink="/maintenance-detail/{{element.maintenanceId}}" selected>
         <mat-icon>visibility</mat-icon> Detalhe
       </button>
+      <button mat-flat-button color="primary" routerLink="/maintenance-item-edit/{{item.id}}/{{element.maintenanceId}}" selected>
+        <mat-icon>edit</mat-icon> Editar
+      </button>
       <button mat-flat-button color="warn" (click)="deleteMaintenanceItem(item.id, element.maintenanceId)">
         <mat-icon>delete</mat-icon> Excluir
       </button>

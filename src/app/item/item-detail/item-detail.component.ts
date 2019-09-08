@@ -32,7 +32,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
   getMaintenaceItems(id) {
-    this.api.GetIMaintenanceItems(id)
+    this.api.GetMaintenanceItems(id)
       .subscribe(res => {
         this.dataSource = res;
         this.isLoadingResults = false;
