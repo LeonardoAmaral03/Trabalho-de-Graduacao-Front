@@ -11,7 +11,7 @@ import { MaintenanceItem } from '../../../models/maintenanceItem'
 })
 export class ItemDetailComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name', 'period', 'status', 'acao'];
+  displayedColumns: string[] = [ 'name', 'period', 'acao'];
   item: Item = { id: '', name: '', brand: '', model: '', description: '' };
   dataSource: MaintenanceItem[];
   isLoadingResults = true;

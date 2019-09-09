@@ -4,7 +4,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { ApiMaintenanceItemService } from '../../../services/api-maintenance-item.service';
 import { Maintenance } from 'src/models/maintenance';
 import { MaintenanceItem } from 'src/models/maintenanceItem';
-import { Status } from '../../../models/enum/enumStatus';
+// import { Status } from '../../../models/enum/enumStatus';
 
 @Component({
   selector: 'app-maintenance-item-edit',
@@ -19,7 +19,7 @@ export class MaintenanceItemEditComponent implements OnInit {
   itemName: String = '';
   maintenanceId: String = '';
   period: String = '';
-  status: Status = null;
+  // status: Status = null;
   maintenanceName: String = '';
   isLoadingResults = false;
 
@@ -33,8 +33,8 @@ export class MaintenanceItemEditComponent implements OnInit {
     this.maintenanceItemForm = this.formBuilder.group({
       itemId : [null, Validators.required],
       maintenanceId : [null, Validators.required],
-      period: [null, Validators.required],
-      status: [null, Validators.required]
+      period: [null, Validators.required]
+      // status: [null, Validators.required]
     });
   }
 
@@ -49,7 +49,7 @@ export class MaintenanceItemEditComponent implements OnInit {
         itemId: data.maintenanceItem.itemId,
         maintenanceId: data.maintenanceItem.maintenanceId,
         period: data.maintenanceItem.period,
-        status: data.maintenanceItem.status
+        // status: data.maintenanceItem.status
       });
     });
   }

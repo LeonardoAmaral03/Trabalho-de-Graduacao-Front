@@ -5,7 +5,7 @@ import { ApiMaintenanceItemService } from '../../../services/api-maintenance-ite
 import { Maintenance } from 'src/models/maintenance';
 import { MaintenanceItem } from 'src/models/maintenanceItem';
 import { Item } from 'src/models/item';
-import { Status } from '../../../models/enum/enumStatus';
+// import { Status } from '../../../models/enum/enumStatus';
 
 @Component({
   selector: 'app-maintenance-item-new',
@@ -14,7 +14,7 @@ import { Status } from '../../../models/enum/enumStatus';
 })
 export class MaintenanceItemNewComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name', 'period', 'status', 'acao'];
+  displayedColumns: string[] = [ 'name', 'period', 'acao'];
   maintenanceItemForm: FormGroup;
   maintenanceItems: MaintenanceItem[];
   maintenances: Maintenance[];
@@ -22,7 +22,7 @@ export class MaintenanceItemNewComponent implements OnInit {
   selected: Maintenance;
   isLoadingResults = false;
 
-  selectedStatus: Status = Status.Pending;
+  // selectedStatus: Status = Status.Pending;
 
   // tslint:disable-next-line: max-line-length
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiMaintenanceItemService, private formBuilder: FormBuilder) { }
@@ -34,7 +34,7 @@ export class MaintenanceItemNewComponent implements OnInit {
       itemId : [null, Validators.required],
       maintenanceId : [null, Validators.required],
       period : [null, Validators.required],
-      status : [null, Validators.required]
+      // status : [null, Validators.required]
     });
 
     this.maintenanceItemForm.controls.itemId.setValue(this.route.snapshot.params.id);

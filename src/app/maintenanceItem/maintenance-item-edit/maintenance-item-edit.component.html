@@ -10,14 +10,14 @@
       <input matInput name="period" placeholder="Período de manutenção em meses" formControlName="period">
     </mat-form-field>
   
-    <mat-form-field>
+    <!-- <mat-form-field> -->
       <!-- <input matInput name="status" placeholder="Status" formControlName="status"> -->
-      <mat-select name="status" placeholder="Status" [(ngModel)]="status" formControlName="status" disabled="true">
+      <!-- <mat-select name="status" placeholder="Status" [(ngModel)]="status" formControlName="status" disabled="true">
         <mat-option [value]="0">Realizada</mat-option>
         <mat-option [value]="1">Atrasada</mat-option>
         <mat-option [value]="2">Pendente</mat-option>
-      </mat-select>
-    </mat-form-field>
+      </mat-select> -->
+    <!-- </mat-form-field> -->
     
     <button type="submit" [disabled]="!maintenanceItemForm.valid" mat-button color="primary" >Adicionar</button>
   </form>
