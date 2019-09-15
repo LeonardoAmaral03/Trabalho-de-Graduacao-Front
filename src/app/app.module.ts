@@ -65,6 +65,7 @@ import { ComputerEditComponent } from './computer/computer-edit/computer-edit.co
 import { ComputerDetailComponent } from './computer/computer-detail/computer-detail.component';
 import { MaintenanceItemNewComponent } from './maintenanceItem/maintenance-item-new/maintenance-item-new.component';
 import { MaintenanceItemEditComponent } from './maintenanceItem/maintenance-item-edit/maintenance-item-edit.component';
+import { ItemComputerNewComponent } from './itemComputer/item-computer-new/item-computer-new.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MaintenanceItemEditComponent } from './maintenanceItem/maintenance-item
     ComputerEditComponent,
     ComputerDetailComponent,
     MaintenanceItemNewComponent,
-    MaintenanceItemEditComponent
+    MaintenanceItemEditComponent,
+    ItemComputerNewComponent
   ],
   imports: [
     BrowserModule,

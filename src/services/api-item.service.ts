@@ -72,7 +72,7 @@ export class ApiItemService {
 
     return this.http.delete<MaintenanceItem>(url, httpOptions).pipe(
       tap(_ => console.log(`remove a manutenção do item com itemId=${itemId} e maintenanceId=${maintenanceId}`)),
-      catchError(this.handleError<MaintenanceItem>('deleteItem'))
+      catchError(this.handleError<MaintenanceItem>('deleteMaintenanceItem'))
     );
   }
 

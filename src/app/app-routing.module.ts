@@ -14,6 +14,7 @@ import { ComputerNewComponent } from './computer/computer-new/computer-new.compo
 import { ComputerEditComponent } from './computer/computer-edit/computer-edit.component';
 import { MaintenanceItemNewComponent } from './maintenanceItem/maintenance-item-new/maintenance-item-new.component';
 import { MaintenanceItemEditComponent } from './maintenanceItem/maintenance-item-edit/maintenance-item-edit.component';
+import { ItemComputerNewComponent } from './itemComputer/item-computer-new/item-computer-new.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,11 @@ const routes: Routes = [
     component: MaintenanceItemEditComponent,
     data: { title: 'Edit MaintenanceItem' }
   },
+  {
+    path: 'item-computer-new/:id',
+    component: ItemComputerNewComponent,
+    data: { title: 'Add ItemComputer' }
+  }
 ];
 
 @NgModule({

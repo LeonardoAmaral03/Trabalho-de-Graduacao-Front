@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiItemService } from '../../../services/api-item.service';
 import { Item } from '../../../models/item';
-import { MaintenanceItem } from '../../../models/maintenanceItem'
+import { MaintenanceItem } from '../../../models/maintenanceItem';
 
 @Component({
   selector: 'app-item-detail',

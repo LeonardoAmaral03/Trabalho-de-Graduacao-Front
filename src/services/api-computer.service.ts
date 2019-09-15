@@ -3,6 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Computer } from 'src/models/computer';
+import { ItemComputer } from 'src/models/itemComputer';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -21,6 +22,15 @@ export class ApiComputerService {
       .pipe(
         tap(computers => console.log('leu os computadores')),
         catchError(this.handleError('getComputers', []))
+      );
+  }
+
+  GetItemComputers(id: number): Observable<ItemComputer[]> {
+    const url = `${apiUrl}/ItemComputer/${id}`;
+    return this.http.get<ItemComputer[]>(url)
+      .pipe(
+        tap(maintenanceItens => console.log('leu os itens do computador')),
+        catchError(this.handleError('GetItemComputers', []))
       );
   }
 
@@ -54,6 +64,15 @@ export class ApiComputerService {
     return this.http.delete<Computer>(url, httpOptions).pipe(
       tap(_ => console.log(`remove o computador com id=${id}`)),
       catchError(this.handleError<Computer>('deleteComputer'))
+    );
+  }
+
+  deleteItemComputer(computerId, itemId): Observable<ItemComputer> {
+    const url = `${apiUrl}/${computerId}/${itemId}`;
+
+    return this.http.delete<ItemComputer>(url, httpOptions).pipe(
+      tap(_ => console.log(`remove o item do computador com computerId=${computerId} e itemId=${itemId}`)),
+      catchError(this.handleError<ItemComputer>('deleteItemComputer'))
     );
   }
 
