@@ -15,6 +15,7 @@ import { ComputerEditComponent } from './computer/computer-edit/computer-edit.co
 import { MaintenanceItemNewComponent } from './maintenanceItem/maintenance-item-new/maintenance-item-new.component';
 import { MaintenanceItemEditComponent } from './maintenanceItem/maintenance-item-edit/maintenance-item-edit.component';
 import { ItemComputerNewComponent } from './itemComputer/item-computer-new/item-computer-new.component';
+import { ScheduleComponent } from './schedule/schedule/schedule.component';
 
 const routes: Routes = [
   {
@@ -96,7 +97,17 @@ const routes: Routes = [
     path: 'item-computer-new/:id',
     component: ItemComputerNewComponent,
     data: { title: 'Add ItemComputer' }
+  },
+  {
+    path: 'computer-schedule',
+    component: ScheduleComponent,
+    data: { title: 'Computer Schedule' }
   }
+  // {
+  //   path: 'computer-schedule/:id',
+  //   component: ScheduleComponent,
+  //   data: { title: 'Computer Schedule' }
+  // }
 ];
 
 @NgModule({
