@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Computer } from 'src/models/computer';
 import { ItemComputer } from 'src/models/itemComputer';
+import { ComputerScheduleViewModel } from 'src/models/computerScheduleViewModel'
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -29,8 +30,17 @@ export class ApiComputerService {
     const url = `${apiUrl}/ItemComputer/${id}`;
     return this.http.get<ItemComputer[]>(url)
       .pipe(
-        tap(maintenanceItens => console.log('leu os itens do computador')),
+        tap(itemComputers => console.log('leu os itens do computador')),
         catchError(this.handleError('GetItemComputers', []))
+      );
+  }
+
+  GetComputerSchedules(id: number): Observable<ComputerScheduleViewModel[]> {
+    const url = `${apiUrl}/ComputerSchedule/${id}`;
+    return this.http.get<ComputerScheduleViewModel[]>(url)
+      .pipe(
+        tap(computerScheduleViewModels => console.log('leu a agenda de manutenção de cada item do computador')),
+        catchError(this.handleError('GetComputerSchedules', []))
       );
   }
 

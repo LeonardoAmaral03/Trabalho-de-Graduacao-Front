@@ -99,7 +99,7 @@ const routes: Routes = [
     data: { title: 'Add ItemComputer' }
   },
   {
-    path: 'computer-schedule',
+    path: 'computer-schedule/:id',
     component: ScheduleComponent,
     data: { title: 'Computer Schedule' }
   }

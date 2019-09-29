@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
+import { Router, ActivatedRoute } from '@angular/router';
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours, isThisSecond } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { ApiComputerService } from '../../../services/api-computer.service';
 
 const colors: any = {
   red: {
@@ -36,6 +38,15 @@ export class ScheduleComponent implements OnInit {
 
   viewDate: Date = new Date();
 
+  isLoadingResults = true;
+
+  concatStrings: string;
+
+  colorStatus: {
+    primary: string,
+    secondary: string
+  };
+
   modalData: {
     action: string;
     event: CalendarEvent;
@@ -59,52 +70,99 @@ export class ScheduleComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
+  events: CalendarEvent[] = []; // = [
+  //   {
+  //     start: subDays(startOfDay(new Date()), 1),
+  //     end: addDays(new Date(), 1),
+  //     title: 'A 3 day event',
+  //     color: colors.red,
+  //     actions: this.actions,
+  //     allDay: true,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     },
+  //     draggable: true
+  //   },
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'An event with no end date',
+  //     color: colors.yellow,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     start: subDays(endOfMonth(new Date()), 3),
+  //     end: addDays(endOfMonth(new Date()), 3),
+  //     title: 'A long event that spans 2 months',
+  //     color: colors.blue,
+  //     allDay: true
+  //   },
+  //   {
+  //     start: addHours(startOfDay(new Date()), 2),
+  //     end: new Date(),
+  //     title: 'A draggable and resizable event',
+  //     color: colors.yellow,
+  //     actions: this.actions,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     },
+  //     draggable: true
+  //   }
+  // ];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) { }
+  constructor(private modal: NgbModal, private router: Router, private route: ActivatedRoute, private _api: ApiComputerService) { }
 
   ngOnInit() {
+    this._api.GetComputerSchedules(this.route.snapshot.params.id)
+    .subscribe(res => {
+      // console.log(res);
+      // console.log(startOfDay(new Date()));
+      // console.log(new Date());
+
+      res.forEach(element => {
+        // console.log(element.maintenanceName);
+        // console.log(element.maintenanceDate);
+        // console.log(startOfDay(element.maintenanceDate));
+
+        if (element.status == 0) {
+          this.colorStatus = {
+            primary: '#1e90ff',
+            secondary: '#D1E8FF'
+          };
+        } else if (element.status == 1) {
+          this.colorStatus = {
+            primary: '#ad2121',
+            secondary: '#FAE3E3'
+          };
+        } else {
+          this.colorStatus = {
+            primary: '#e3bc08',
+            secondary: '#FDF1BA'
+          };
+        }
+
+        this.concatStrings = element.itemName + ' - ' + element.maintenanceName;
+
+        this.events = [
+          ...this.events,
+          {
+            start: startOfDay(element.maintenanceDate),
+            title: this.concatStrings,
+            color: this.colorStatus
+          }
+        ];
+      });
+
+      // console.log(this.events);
+
+      this.isLoadingResults = false;
+    }, err => {
+      // console.log(err);
+      this.isLoadingResults = false;
+    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
