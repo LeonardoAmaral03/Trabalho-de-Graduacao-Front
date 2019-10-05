@@ -1,0 +1,53 @@
+<div>
+    <h3>Manutenções Atrasadas e Pendentes</h3>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+ 
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> 
+            <span [ngClass]="{'dotPending': element.status === pending, 
+                              'dotNotAccomplished': element.status === notAccomplished}"></span> 
+        </td>
+    </ng-container>
+      
+    <!-- Name Column -->
+    <ng-container matColumnDef="computerName">
+        <th mat-header-cell *matHeaderCellDef> <mat-icon matListIcon>computer</mat-icon> Computador </th>
+        <td mat-cell *matCellDef="let element"> {{element.computerName}} </td>
+    </ng-container>
+      
+        <!-- Weight Column -->
+    <ng-container matColumnDef="itemName">
+        <th mat-header-cell *matHeaderCellDef> <mat-icon matListIcon>mouse</mat-icon> Item </th>
+        <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="maintenanceName">
+        <th mat-header-cell *matHeaderCellDef> <mat-icon matListIcon>build</mat-icon> Manutenção </th>
+        <td mat-cell *matCellDef="let element"> {{element.maintenanceName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="maintenanceDate">
+        <th mat-header-cell *matHeaderCellDef> <mat-icon matListIcon>event</mat-icon> Data da Manutenção </th>
+        <td mat-cell *matCellDef="let element"> {{element.maintenanceDate | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+        
+    <!-- Position Column -->
+    <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element"> 
+            
+        </td>
+    </ng-container>
+        
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

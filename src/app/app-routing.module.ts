@@ -16,6 +16,7 @@ import { MaintenanceItemNewComponent } from './maintenanceItem/maintenance-item-
 import { MaintenanceItemEditComponent } from './maintenanceItem/maintenance-item-edit/maintenance-item-edit.component';
 import { ItemComputerNewComponent } from './itemComputer/item-computer-new/item-computer-new.component';
 import { ScheduleComponent } from './schedule/schedule/schedule.component';
+import { ListSchedulesComponent } from './schedule/list-schedules/list-schedules.component'
 
 const routes: Routes = [
   {
@@ -80,7 +81,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/maintenances',
+    // redirectTo: '/maintenances',
+    redirectTo: '/list-schedule',
     pathMatch: 'full'
   },
   {
@@ -102,6 +104,11 @@ const routes: Routes = [
     path: 'computer-schedule/:id',
     component: ScheduleComponent,
     data: { title: 'Computer Schedule' }
+  },
+  {
+    path: 'list-schedule',
+    component: ListSchedulesComponent,
+    data: { title: 'List Schedules' }
   }
   // {
   //   path: 'computer-schedule/:id',

@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+}
+
+.dotPending {
+  height: 25px;
+  width: 25px;
+  background-color: #f6ff00;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotNotAccomplished {
+  height: 25px;
+  width: 25px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: inline-block;
+}

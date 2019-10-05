@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Computer } from 'src/models/computer';
 import { ItemComputer } from 'src/models/itemComputer';
-import { ComputerScheduleViewModel } from 'src/models/computerScheduleViewModel'
+import { ComputerScheduleViewModel } from 'src/models/computerScheduleViewModel';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
