@@ -44,7 +44,7 @@
     <ng-container matColumnDef="acao">
         <th mat-header-cell *matHeaderCellDef>  </th>
         <td mat-cell *matCellDef="let element"> 
-            
+            <button mat-flat-button color="accent" (click)="openDialog(element.computerId, element.itemId, element.maintenanceId, element.maintenanceDate)" selected> Realizada </button>
         </td>
     </ng-container>
         

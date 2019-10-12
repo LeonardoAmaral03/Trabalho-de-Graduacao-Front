@@ -73,7 +73,7 @@ import { ItemComputerNewComponent } from './itemComputer/item-computer-new/item-
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ScheduleComponent } from './schedule/schedule/schedule.component';
-import { ListSchedulesComponent } from './schedule/list-schedules/list-schedules.component';
+import { ListSchedulesComponent, DialogStatusAccomplished } from './schedule/list-schedules/list-schedules.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +95,8 @@ import { ListSchedulesComponent } from './schedule/list-schedules/list-schedules
     MaintenanceItemEditComponent,
     ItemComputerNewComponent,
     ScheduleComponent,
-    ListSchedulesComponent
+    ListSchedulesComponent,
+    DialogStatusAccomplished
   ],
   exports: [ScheduleComponent],
   imports: [
@@ -156,6 +157,7 @@ import { ListSchedulesComponent } from './schedule/list-schedules/list-schedules
       useFactory: adapterFactory
     })
   ],
+  entryComponents: [ListSchedulesComponent, DialogStatusAccomplished],
   providers: [],
   bootstrap: [AppComponent]
 })
