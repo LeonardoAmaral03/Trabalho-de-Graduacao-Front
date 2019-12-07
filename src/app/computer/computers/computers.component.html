@@ -1,6 +1,6 @@
 <div>
-  <h3>Lista de Computadores</h3>
-  <button mat-flat-button color="primary" routerLink="/computer-new" selected><mat-icon>add</mat-icon> Adicionar</button>
+  <h3 class="tittlePage">Lista de Computadores</h3>
+  <button class="buttonAdd" mat-flat-button color="primary" routerLink="/computer-new" selected><mat-icon>add</mat-icon> Adicionar</button>
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
  
@@ -26,7 +26,7 @@
       <button mat-flat-button color="accent" routerLink="/computer-detail/{{element.id}}" selected>
         <mat-icon>visibility</mat-icon> Detalhe
       </button>
-      <button mat-flat-button color="warn" routerLink="/computer-schedule/{{element.id}}" selected>
+      <button class="marginButtonLeft" mat-flat-button color="warn" routerLink="/computer-schedule/{{element.id}}" selected>
         <!-- <button mat-flat-button color="warn" routerLink="/computer-schedule" selected>   -->
         <mat-icon>event</mat-icon> Calendário
       </button>

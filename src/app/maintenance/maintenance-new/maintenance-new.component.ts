@@ -18,7 +18,7 @@ export class MaintenanceNewComponent implements OnInit {
   ngOnInit() {
     this.maintenanceForm = this.formBuilder.group({
       name : [null, Validators.required],
-      activity : [null, [Validators.required, Validators.minLength(4)]]
+      activity : [null, [Validators.required]]
     });
   }
 

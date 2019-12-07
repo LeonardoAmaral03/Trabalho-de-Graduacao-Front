@@ -33,7 +33,7 @@ export class MaintenanceItemEditComponent implements OnInit {
     this.maintenanceItemForm = this.formBuilder.group({
       itemId : [null, Validators.required],
       maintenanceId : [null, Validators.required],
-      period: [null, Validators.required]
+      period : [null, [Validators.min(1), Validators.required]]
       // status: [null, Validators.required]
     });
   }

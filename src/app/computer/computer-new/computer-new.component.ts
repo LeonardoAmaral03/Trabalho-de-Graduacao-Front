@@ -18,7 +18,7 @@ export class ComputerNewComponent implements OnInit {
   ngOnInit() {
     this.computerForm = this.formBuilder.group({
       name : [null, Validators.required],
-      description : [null, [Validators.required, Validators.minLength(4)]]
+      description : [null, [Validators.required]]
     });
   }
 

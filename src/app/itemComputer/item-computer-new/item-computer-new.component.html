@@ -1,7 +1,7 @@
 <div>
-    <h3>Adicionar Novo Item ao Computador</h3>
+    <h3 class="marginTittleForm">Adicionar Novo Item ao Computador</h3>
   </div>
-  <form class="example-container" [formGroup]="itemComputerForm" (ngSubmit)="addItemComputer(itemComputerForm.value)">
+  <form class="example-container marginForm" [formGroup]="itemComputerForm" (ngSubmit)="addItemComputer(itemComputerForm.value)">
     <h2>{{computer?.name}}</h2>
   
     <mat-form-field>
@@ -29,7 +29,7 @@
   </form>
   
   <div>
-    <h3>Lista de Itens</h3>
+    <h3 class="tittlePage">Lista de Itens</h3>
   </div>
   <table mat-table [dataSource]="itemComputers" class="mat-elevation-z8">
   

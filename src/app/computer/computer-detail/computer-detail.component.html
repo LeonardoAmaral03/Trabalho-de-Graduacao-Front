@@ -21,14 +21,14 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-flat-button color="primary" class="teste" [routerLink]="['/computer-edit', computer.id]"><mat-icon>edit</mat-icon> Editar</button>
-      <button mat-flat-button color="warn" (click)="deleteComputer(computer.id)"><mat-icon>delete</mat-icon> Excluir</button>
+      <button class="marginButtonLeft" mat-flat-button color="warn" (click)="deleteComputer(computer.id)"><mat-icon>delete</mat-icon> Excluir</button>
     </mat-card-actions>
   </mat-card>
 </div>
 
 <div>
-  <h3>Lista de Itens</h3>
-  <button mat-flat-button color="primary" [routerLink]="['/item-computer-new', computer.id]" selected><mat-icon>add</mat-icon> Adicionar</button>
+  <h3 class="tittlePage">Lista de Itens</h3>
+  <button class="buttonAdd" mat-flat-button color="primary" [routerLink]="['/item-computer-new', computer.id]" selected><mat-icon>add</mat-icon> Adicionar</button>
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -63,7 +63,7 @@
       <!-- <button mat-flat-button color="primary" routerLink="/maintenance-item-edit/{{item.id}}/{{element.maintenanceId}}" selected>
         <mat-icon>edit</mat-icon> Editar
       </button> -->
-      <button mat-flat-button color="warn" (click)="deleteItemComputer(computer.id, element.itemId)">
+      <button class="marginButtonLeft" mat-flat-button color="warn" (click)="deleteItemComputer(computer.id, element.itemId)">
         <mat-icon>delete</mat-icon> Excluir
       </button>
     </td>

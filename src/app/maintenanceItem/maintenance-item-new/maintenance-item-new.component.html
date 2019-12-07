@@ -1,7 +1,7 @@
 <div>
-  <h3>Adicionar Nova Manutenção ao Item</h3>
+  <h3 class="marginTittleForm">Adicionar Nova Manutenção ao Item</h3>
 </div>
-<form class="example-container" [formGroup]="maintenanceItemForm" (ngSubmit)="addMaintenanceItem(maintenanceItemForm.value)">
+<form class="example-container marginForm" [formGroup]="maintenanceItemForm" (ngSubmit)="addMaintenanceItem(maintenanceItemForm.value)">
   <h2>{{item?.name}}</h2>
 
   <mat-form-field>
@@ -13,7 +13,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="period" placeholder="Período de manutenção em meses" formControlName="period">
+    <input type="number" matInput name="period" placeholder="Período de manutenção em meses" formControlName="period">
   </mat-form-field>
 
   <!-- <mat-form-field> -->
@@ -29,7 +29,7 @@
 </form>
 
 <div>
-  <h3>Lista de Manutenções</h3>
+  <h3 class="tittlePage">Lista de Manutenções</h3>
 </div>
 <table mat-table [dataSource]="maintenanceItems" class="mat-elevation-z8">
 

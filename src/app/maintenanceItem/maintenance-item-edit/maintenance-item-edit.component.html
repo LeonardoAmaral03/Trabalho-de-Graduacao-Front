@@ -1,13 +1,13 @@
 <div>
-    <h3>Editar Manutenção do Item</h3>
+    <h3 class="marginTittleForm">Editar Manutenção do Item</h3>
   </div>
-  <form class="example-container" [formGroup]="maintenanceItemForm" (ngSubmit)="updateItem(maintenanceItemForm.value)">
+  <form class="example-container marginForm" [formGroup]="maintenanceItemForm" (ngSubmit)="updateItem(maintenanceItemForm.value)">
     <h2>{{itemName}}</h2>
 
     <h3>{{maintenanceName}}</h3>
   
     <mat-form-field>
-      <input matInput name="period" placeholder="Período de manutenção em meses" formControlName="period">
+      <input type="number" matInput name="period" placeholder="Período de manutenção em meses" formControlName="period">
     </mat-form-field>
   
     <!-- <mat-form-field> -->

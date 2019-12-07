@@ -20,7 +20,7 @@ export class ItemNewComponent implements OnInit {
       name : [null, Validators.required],
       brand : [null, Validators.required],
       model : [null, Validators.required],
-      description : [null, [Validators.required, Validators.minLength(4)]]
+      description : [null, [Validators.required]]
     });
   }
 
